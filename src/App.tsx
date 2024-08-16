@@ -46,7 +46,9 @@ function App() {
   }
 
   return (
-    <>
+    <div
+      className='bg-[#242424] text-white font-roboto min-h-screen flex flex-col items-center justify-start'
+    >
       <h1>Desafios</h1>
 
       <SecaoDesafio title="Conversão temperatura">
@@ -83,7 +85,7 @@ function App() {
           {categoria && <h5>{categoria}</h5>}
         </div>
       </SecaoDesafio>
-    </>
+    </div>
   )
 }
 
