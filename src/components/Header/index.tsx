@@ -25,7 +25,7 @@ export const Header = () => {
         {desafiosIsOpen && (
           <ul className="bg-slate-700 py-4 px-3 absolute mt-6 w-80 flex flex-col items-start justify-center gap-4 rounded-b-lg">
             {desafios.map(desafio => (
-              <li onClick={() => clickedDesafioItem(desafio.slug)} className="cursor-pointer">{desafio.nome}
+              <li key={desafio.id} onClick={() => clickedDesafioItem(desafio.slug)} className="cursor-pointer">{desafio.nome}
               </li>
             ))}
           </ul>

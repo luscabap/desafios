@@ -1,5 +1,7 @@
-import { ConversaoTemperatura } from "./ConversaoTemperatura"
+import ConversaoTemperatura from "./ConversaoTemperatura"
+import CalculoIMC from "./CalculoIMC";
 
 export {
-  ConversaoTemperatura
+  ConversaoTemperatura,
+  CalculoIMC
 }

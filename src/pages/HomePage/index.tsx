@@ -20,7 +20,7 @@ export const HomePage = () => {
       <h2>Desafios</h2>
       {
         desafios.map(desafio => (
-          <SobreDesafio descricao={desafio.enunciado} slug={desafio.slug} nome={desafio.nome}/>)
+          <SobreDesafio descricao={desafio.enunciado} slug={desafio.slug} nome={desafio.nome} key={desafio.id}/>)
         )
       }
       </div>
