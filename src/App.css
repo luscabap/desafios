@@ -1,0 +1,4 @@
+.containerTemperatura{
+  display: flex;
+  flex-direction: column;
+}
