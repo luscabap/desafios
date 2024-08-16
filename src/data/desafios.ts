@@ -14,6 +14,6 @@ export const desafios: TDesafio[] = [
     nome: "Calculadora IMC",
     slug: "calculadora-imc",
     enunciado: "Crie um código que faça o cálculo do IMC de uma pessoa.",
-    resolucao: "ConversaoTemperatura",
+    resolucao: "CalculoIMC",
   }
 ]

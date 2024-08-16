@@ -11,9 +11,9 @@ export const DesafioPage = () => {
   const desafio = desafios.find(desafio => desafio.slug === params.slugDesafio);
   return (
     desafio && 
-    <div className="my-5 flex flex-col gap-20">
+    <div className="my-5 flex flex-col items-center justify-center gap-20 w-1/2">
         <TitleSection text={desafio.nome} contrast={true} size="large"/>
-        <div>
+        <div className="w-full">
           {
             RecordResolucoes[desafio.resolucao]
           }
