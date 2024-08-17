@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion"
 
 type TTitleSection = {
   text: string,
@@ -31,6 +32,11 @@ export const TitleSection = ({ text, contrast = false, size = "normal" }:TTitleS
 
   
   return (
-    <h2 className={`${sizeText} ${contrast ? "bg-slate-500" : "bg-transparent"} rounded-lg p-2`}>{text}</h2>
+    <motion.h2 
+      className={`${sizeText} ${contrast ? "bg-slate-500" : "bg-transparent"} rounded-lg p-2`}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ delay: 0.2, duration: 0.2 }}
+    >{text}</motion.h2>
   )
 }
