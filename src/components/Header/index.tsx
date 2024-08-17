@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { Logo } from "../Logo";
 import { desafios } from "../../data/desafios";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion"
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -22,14 +23,28 @@ export const Header = () => {
       <button onClick={() => navigate("/")} className="cursor-pointer">Home</button>
       <nav className="relative text-right w-1/6">
         <h3 onClick={toggleDesafioIsOpen} className="cursor-pointer text-center">Desafios</h3>
-        {desafiosIsOpen && (
-          <ul className="bg-slate-700 py-4 px-3 absolute mt-6 w-80 flex flex-col items-start justify-center gap-4 rounded-b-lg">
-            {desafios.map(desafio => (
-              <li key={desafio.id} onClick={() => clickedDesafioItem(desafio.slug)} className="cursor-pointer">{desafio.nome}
-              </li>
-            ))}
-          </ul>
-        )}
+        <AnimatePresence>
+          {desafiosIsOpen && (
+            <motion.ul 
+              className="bg-slate-700 py-4 px-3 absolute mt-6 w-80 flex flex-col items-start justify-center gap-4 rounded-b-lg origin-top"
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              exit={{ scaleY: 0 }}
+            >
+              {desafios.map(desafio => (
+                <motion.li 
+                  key={desafio.id} onClick={() => clickedDesafioItem(desafio.slug)} className="cursor-pointer hover:text-slate-500"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  transition={{ duration: 0.1, delay: 0.3 }}
+                >
+                    {desafio.nome}
+                </motion.li>
+              ))}
+            </motion.ul>
+          )}
+        </AnimatePresence>
 
       </nav>
     </header>
