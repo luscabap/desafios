@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { SecaoDesafio } from "../../SecaoDesafio";
 
 const ConversaoTemperatura = () => {
@@ -18,10 +18,10 @@ const ConversaoTemperatura = () => {
     setValorConvertido(`${temperaturaConvertida.toFixed(2).toString()} °${operatorTemperatura ? "F" : "C"}`)
   }
 
-  const changedOpcaoMedida = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const changedOpcaoMedida = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     setValorConvertido(null)
     setOpcao(e.target.value)
-  }
+  }, [])
 
   return (
     <SecaoDesafio>
