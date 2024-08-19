@@ -1,28 +1,66 @@
 import { ReactNode, useEffect, useState } from "react";
 import { CalculoTriangulo } from "../../Calculos/FigurasPlanas/Triangulo";
+import { FaLongArrowAltLeft } from "react-icons/fa";
+import { InfoWithIcon } from "../../InfoWithIcon";
+import { GrUserWorker } from "react-icons/gr";
+
 
 const FigurasPlanas = () => {
   const [figura, setFigura] = useState<null | ReactNode>(null);
 
   useEffect(() => {
     switch (figura) {
+      case null:
+        setFigura(<InfoWithIcon 
+            icon={<FaLongArrowAltLeft />} 
+            text="Por favor, selecione uma figura plana para calcular."
+            directionPrimay={true}
+            />)
+        break;
+      case "":
+        setFigura(<InfoWithIcon 
+          icon={<FaLongArrowAltLeft />} 
+          text="Por favor, selecione uma figura plana para calcular."
+          directionPrimay={true}
+          />)
+        break;
       case "triangulo":
         setFigura(<CalculoTriangulo />)
         break;
       case "retangulo":
-        setFigura(<div>EM CONSTRUÇÃO...</div>)
+        setFigura(<InfoWithIcon 
+          icon={<GrUserWorker />} 
+          text="EM CONSTRUÇÃO..."
+          directionPrimay={true}
+          />)
         break;
       case "quadrado":
-        setFigura(<div>EM CONSTRUÇÃO...</div>)
+        setFigura(<InfoWithIcon 
+          icon={<GrUserWorker />} 
+          text="EM CONSTRUÇÃO..."
+          directionPrimay={true}
+          />)
         break;
       case "circulo":
-        setFigura(<div>EM CONSTRUÇÃO...</div>)
+        setFigura(<InfoWithIcon 
+          icon={<GrUserWorker />} 
+          text="EM CONSTRUÇÃO..."
+          directionPrimay={true}
+          />)
         break;
       case "trapezio":
-        setFigura(<div>EM CONSTRUÇÃO...</div>)
+        setFigura(<InfoWithIcon 
+          icon={<GrUserWorker />} 
+          text="EM CONSTRUÇÃO..."
+          directionPrimay={true}
+          />)
         break;
       case "losango":
-        setFigura(<div>EM CONSTRUÇÃO...</div>)
+        setFigura(<InfoWithIcon 
+          icon={<GrUserWorker />} 
+          text="EM CONSTRUÇÃO..."
+          directionPrimay={true}
+          />)
         break;
       default:
         break;
@@ -36,7 +74,7 @@ const FigurasPlanas = () => {
           className="text-black bg-slate-600 p-1 rounded-lg"
           onChange={e => setFigura(e.target.value)}
         >
-          <option value="" content=""></option>
+          <option value="">Selecione uma opção</option>
           <option value="triangulo">Triângulo</option>
           <option value="retangulo">Retângulo</option>
           <option value="quadrado">Quadrado</option>
