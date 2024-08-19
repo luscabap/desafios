@@ -6,3 +6,9 @@
   font-family: "Roboto";
   src: url("./font/roboto.ttf") format("opentype");
 }
+
+@layer base {
+  * {
+    @apply transition-colors duration-300 ease-in-out;
+  }
+}
