@@ -26,7 +26,7 @@ export const Header = () => {
         <AnimatePresence>
           {desafiosIsOpen && (
             <motion.ul 
-              className="bg-slate-700 py-4 px-3 absolute mt-6 w-80 flex flex-col items-start justify-center gap-4 rounded-b-lg origin-top"
+              className="bg-slate-700 py-4 px-3 absolute mt-6 w-full flex flex-col items-start justify-center gap-4 rounded-b-lg origin-top"
               initial={{ scaleY: 0 }}
               animate={{ scaleY: 1 }}
               exit={{ scaleY: 0 }}
