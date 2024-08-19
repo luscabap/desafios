@@ -3,13 +3,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { useState } from "react";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
-
-
-type TSobreDesafio = {
-  descricao: string;
-  slug: string;
-  nome: string;
-};
+import { TSobreDesafio } from "../../types/TSobreDesafio";
 
 export const SobreDesafio = ({ descricao, slug, nome }: TSobreDesafio) => {
   const navigate = useNavigate();

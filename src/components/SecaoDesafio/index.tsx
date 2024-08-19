@@ -1,10 +1,6 @@
 import { ReactNode } from "react"
 
-type Props = {
-  children: ReactNode
-}
-
-export const SecaoDesafio = ({ children }: Props) => {
+export const SecaoDesafio = ({ children }: {children: ReactNode}) => {
   return (
     <div>
       {children}

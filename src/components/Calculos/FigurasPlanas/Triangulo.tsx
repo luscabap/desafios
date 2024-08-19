@@ -1,17 +1,5 @@
 import { useState } from "react";
-
-type TResultados = {
-  area: null | string,
-  perimetro: null | string,
-}
-
-type TValoresTriangulo = {
-  base: null | number,
-  altura: null | number,
-  hipo: null | number,
-}
-
-
+import { TResultados, TValoresTriangulo } from "../../../types/TTriangulo";
 
 export const CalculoTriangulo = () => {
   const [valoresArea, setValoresArea] = useState<TValoresTriangulo>({

@@ -1,11 +1,4 @@
-import { HTMLAttributes, ReactNode } from "react";
-import { IconBaseProps } from "react-icons"
-
-type TInfoWithIcon = {
-  text: string,
-  icon: IconBaseProps | ReactNode,
-  directionPrimay?: boolean
-} & HTMLAttributes<HTMLDivElement>;
+import { TInfoWithIcon } from "../../types/TInfoWithIcon"
 
 export const InfoWithIcon = ({ text, icon, directionPrimay = true, ...rest }: TInfoWithIcon) => {
   return (

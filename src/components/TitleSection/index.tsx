@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion"
-
-type TTitleSection = {
-  text: string,
-  size?: "small" | "normal" | "large"
-  contrast?: boolean
-}
+import { TTitleSection } from "../../types/TTitleSection";
 
 export const TitleSection = ({ text, contrast = false, size = "normal" }:TTitleSection) => {
 

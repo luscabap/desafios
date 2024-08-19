@@ -3,11 +3,7 @@ import { useState } from "react";
 import { FcIdea } from "react-icons/fc";
 import { motion } from "framer-motion";
 
-type TDica = {
-  text: string
-}
-
-export const Dica = ({ text }: TDica) => {
+export const Dica = ({ text }: {text: string}) => {
   const [tipIsHiden, setTipIsHiden] = useState(true);
   return (
     <div className="flex items-center justify-start gap-2 w-full">
