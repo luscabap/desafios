@@ -72,36 +72,40 @@ const CalculoIMC = () => {
         </button>
       </form>
       <table className="bg-slate-500 w-full rounded-lg my-8">
-        <tr className="text-center text-black py-4">
-          <th>IMC</th>
-          <th>CLASSFICAÇÃO</th>
-          <th>OBESIDADE GRAU</th>
-        </tr>
-        <tr className="text-center text-black border-solid border-[1px] border-black">
-          <td>MENOR QUE 18,5</td>
-          <td>MAGREZA</td>
-          <td>0</td>
-        </tr>
-        <tr className="text-center text-black border-solid border-[1px] border-black">
-          <td>ENTRE 18,5 E 24,9</td>
-          <td>NORMAL</td>
-          <td>0</td>
-        </tr>
-        <tr className="text-center text-black border-solid border-[1px] border-black">
-          <td>ENTRE 25 E 29,9</td>
-          <td>SOBREPESO</td>
-          <td>1</td>
-        </tr>
-        <tr className="text-center text-black border-solid border-[1px] border-black">
-          <td>ENTRE 30 E 39,9</td>
-          <td>OBESIDADE</td>
-          <td>2</td>
-        </tr>
-        <tr className="text-center text-black border-solid border-[1px] border-black rounded-lg">
-          <td>MAIOR QUE 40</td>
-          <td>OBESIDADE GRAVE</td>
-          <td>3</td>
-        </tr>
+        <thead>
+          <tr className="text-center text-black py-4">
+            <th>IMC</th>
+            <th>CLASSFICAÇÃO</th>
+            <th>OBESIDADE GRAU</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="text-center text-black border-solid border-[1px] border-black">
+            <td>MENOR QUE 18,5</td>
+            <td>MAGREZA</td>
+            <td>0</td>
+          </tr>
+          <tr className="text-center text-black border-solid border-[1px] border-black">
+            <td>ENTRE 18,5 E 24,9</td>
+            <td>NORMAL</td>
+            <td>0</td>
+          </tr>
+          <tr className="text-center text-black border-solid border-[1px] border-black">
+            <td>ENTRE 25 E 29,9</td>
+            <td>SOBREPESO</td>
+            <td>1</td>
+          </tr>
+          <tr className="text-center text-black border-solid border-[1px] border-black">
+            <td>ENTRE 30 E 39,9</td>
+            <td>OBESIDADE</td>
+            <td>2</td>
+          </tr>
+          <tr className="text-center text-black border-solid border-[1px] border-black rounded-lg">
+            <td>MAIOR QUE 40</td>
+            <td>OBESIDADE GRAVE</td>
+            <td>3</td>
+          </tr>
+        </tbody>
       </table>
       {imc && <h5>{imc}</h5>}
       {categoria && <h5>A classificação do seu IMC é {categoria}</h5>}

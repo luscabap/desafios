@@ -29,9 +29,7 @@ export const DesafioPage = () => {
           <div className="flex flex-col items-start justify-start gap-8">
               <h4>Dicas</h4>
               { desafio.dicas.map((dica, i) => (
-                <>
-                  <Dica text={dica} key={i}/>
-                </>
+                <Dica text={dica} key={i}/>
               )) }
           </div>
           <motion.button 
