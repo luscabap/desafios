@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { SecaoDesafio } from "../../SecaoDesafio";
 
 const CalculoIMC = () => {
@@ -7,13 +7,14 @@ const CalculoIMC = () => {
   const [imc, setImc] = useState<string | null>();
   const [categoria, setCategoria] = useState<string | null>();
 
-  const submitIMC = (
+  const submitIMC = useCallback((
     peso: number,
     altura: number,
     e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault();
-    const imcCalculado = (peso / altura ** 2) * 10000;
+    const alturaEmMetros = altura / 100;
+    const imcCalculado = peso / alturaEmMetros ** 2;
 
     const textoImc = `O seu IMC é ${imcCalculado.toFixed(2).toString()}`;
 
@@ -37,7 +38,7 @@ const CalculoIMC = () => {
 
     const categoriaIMc = categoria(imcCalculado);
     setCategoria(categoriaIMc);
-  };
+  }, []);
 
   return (
     <SecaoDesafio>
