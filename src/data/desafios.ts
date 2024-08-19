@@ -8,6 +8,10 @@ export const desafios: TDesafio[] = [
     slug: "conversao-temperatura",
     enunciado: "Crie um código que converta graus Celsius para Fahrenheit e vice-versa.",
     resolucao: "ConversaoTemperatura",
+    dicas: [
+      "Fórmulas: F = (C * 9/5) + 32 e C = (F - 32) * 5/9",
+      "Salve os valores digitados pelo usuário em um state."
+    ]
   },
   {
     id: uuidv4(),
@@ -15,6 +19,11 @@ export const desafios: TDesafio[] = [
     slug: "calculadora-imc",
     enunciado: "Crie um código que faça o cálculo do IMC de uma pessoa.",
     resolucao: "CalculoIMC",
+    dicas: [
+      "Fórmula: IMC = peso + altura²",
+      "Padronize o valor do input peso e altura (kg e cm, por exemplo).",
+      "Salve os valores digitados pelo usuário em um state."
+    ]
   },
   {
     id: uuidv4(),
@@ -22,5 +31,8 @@ export const desafios: TDesafio[] = [
     slug: "area-perimetro-planas",
     enunciado: "Crie um código que o usuário seleciona a figura plana e receba os valores das dimensões para o cálculo do perímetro e área.",
     resolucao: "FigurasPlanas",
+    dicas: [
+      "Salve os valores digitados pelo usuário em um state."
+    ]
   }
 ]

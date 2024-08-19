@@ -3,5 +3,6 @@ export type TDesafio = {
   nome: string,
   enunciado: string,
   slug: string,
-  resolucao: string
+  resolucao: string,
+  dicas: string[]
 }

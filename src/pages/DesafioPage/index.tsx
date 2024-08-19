@@ -4,6 +4,7 @@ import { RecordResolucoes } from "../../components/Resolucao/RecordResolucoes";
 import { TitleSection } from "../../components/TitleSection";
 import { IoIosArrowBack } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
+import { Dica } from "../../components/Dica";
 
 export const DesafioPage = () => {
   const params = useParams();
@@ -25,7 +26,14 @@ export const DesafioPage = () => {
               RecordResolucoes[desafio.resolucao]
             }
           </motion.div>
-
+          <div className="flex flex-col items-start justify-start gap-8">
+              <h4>Dicas</h4>
+              { desafio.dicas.map((dica, i) => (
+                <>
+                  <Dica text={dica} key={i}/>
+                </>
+              )) }
+          </div>
           <motion.button 
             className="text-slate-500 items-center justify-center flex" onClick={() => navigate("/")}
             initial={{ x: 100 }}
