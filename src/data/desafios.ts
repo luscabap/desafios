@@ -15,5 +15,12 @@ export const desafios: TDesafio[] = [
     slug: "calculadora-imc",
     enunciado: "Crie um código que faça o cálculo do IMC de uma pessoa.",
     resolucao: "CalculoIMC",
+  },
+  {
+    id: uuidv4(),
+    nome: "Área e Perímetros de figuras planas",
+    slug: "area-perimetro-planas",
+    enunciado: "Crie um código que o usuário seleciona a figura plana e receba os valores das dimensões para o cálculo do perímetro e área.",
+    resolucao: "FigurasPlanas",
   }
 ]
