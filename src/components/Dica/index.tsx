@@ -12,7 +12,7 @@ export const Dica = ({ text }: {text: string}) => {
         <AnimatePresence>
           { tipIsHiden && (
             <motion.p 
-              className="absolute bg-slate-900 w-full origin-right p-1 rounded-lg"
+              className="absolute bg-slate-700 w-full origin-right p-1 rounded-lg"
               initial={{ scaleX: 1 }}
               animate={{ scaleX: 1 }}
               exit={{ scaleX: 0 }}
