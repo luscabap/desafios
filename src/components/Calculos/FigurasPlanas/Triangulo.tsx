@@ -34,7 +34,7 @@ export const CalculoTriangulo = () => {
 
     setResultados({
       ...resultados,
-      area: `O valor da área é ${area.toString()}`
+      area: `O valor da área é: ${area.toString()}`
     })
   }
 

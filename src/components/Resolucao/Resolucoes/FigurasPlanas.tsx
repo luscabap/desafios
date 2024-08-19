@@ -10,13 +10,19 @@ const FigurasPlanas = () => {
         setFigura(<CalculoTriangulo />)
         break;
       case "retangulo":
-        setFigura(<div>retangulo componente</div>)
+        setFigura(<div>EM CONSTRUÇÃO...</div>)
         break;
       case "quadrado":
-        <div>quadrado</div>
+        setFigura(<div>EM CONSTRUÇÃO...</div>)
         break;
       case "circulo":
-        <div>circulo</div>
+        setFigura(<div>EM CONSTRUÇÃO...</div>)
+        break;
+      case "trapezio":
+        setFigura(<div>EM CONSTRUÇÃO...</div>)
+        break;
+      case "losango":
+        setFigura(<div>EM CONSTRUÇÃO...</div>)
         break;
       default:
         break;
@@ -25,7 +31,7 @@ const FigurasPlanas = () => {
 
   return (
     <div>
-      <div>
+      <div className="flex flex-col items-start justify-start">
         <select required 
           className="text-black bg-slate-600 p-1 rounded-lg"
           onChange={e => setFigura(e.target.value)}
@@ -39,7 +45,7 @@ const FigurasPlanas = () => {
           <option value="losango">Losango</option>
         </select>
         {
-          <>{figura}</>
+          <div className="self-center">{figura}</div>
         }
       </div>
     </div>
