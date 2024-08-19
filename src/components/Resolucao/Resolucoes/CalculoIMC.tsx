@@ -49,7 +49,7 @@ const CalculoIMC = () => {
           <label htmlFor="peso">Digite o seu peso (Ex: 80)</label>
           <input
             id="peso"
-            className="bg-zinc-700"
+            className="bg-zinc-700 p-1 rounded-lg"
             type="number"
             placeholder="Kilos"
             onChange={(e) => setPeso(Number(e.target.value))}
@@ -60,7 +60,7 @@ const CalculoIMC = () => {
           <label htmlFor="altura">Digite a sua altura (Ex: 180)</label>
           <input
             id="altura"
-            className="bg-zinc-700"
+            className="bg-zinc-700 p-1 rounded-lg"
             type="number"
             placeholder="Centímetros"
             onChange={(e) => setAltura(Number(e.target.value))}

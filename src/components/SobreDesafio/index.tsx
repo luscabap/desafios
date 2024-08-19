@@ -19,7 +19,7 @@ export const SobreDesafio = ({ descricao, slug, nome }: TSobreDesafio) => {
     <>
       <div 
         onClick={() => setDescIsOpen(pv => !pv)}
-        className="inline-flex items-center justify-start cursor-pointer border-solid border-2 border-slate-600 p-1 rounded-lg w-1/2"
+        className="inline-flex items-center justify-start cursor-pointer border-solid border-2 border-slate-600 p-1 rounded-lg w-1/2 hover:bg-slate-500"
       >
         <h2>{nome}</h2>
         { descIsOpen ? <IoMdArrowDropup size={22}/> : <IoMdArrowDropdown size={22}/>}

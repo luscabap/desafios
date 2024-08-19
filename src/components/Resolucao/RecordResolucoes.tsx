@@ -1,9 +1,11 @@
 import { 
   ConversaoTemperatura, 
-  CalculoIMC 
+  CalculoIMC,
+  FigurasPlanas
 } from "./Resolucoes/index"
 
 export const RecordResolucoes: Record<string, React.ReactNode> = {
   ConversaoTemperatura: <ConversaoTemperatura />,
-  CalculoIMC: <CalculoIMC />
+  CalculoIMC: <CalculoIMC />,
+  FigurasPlanas: <FigurasPlanas />
 }
