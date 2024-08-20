@@ -6,7 +6,8 @@ import { Produto } from "../../Produto";
 type OrdemType = "padrao" | "prc-asc" | "prc-desc" | "qtd-asc" | "qtd-desc";
 
 const FiltroProdutos = () => {
-  const [data, setData] = useState<undefined | Product[]>([]);
+  const [data, setData] = useState<Product[]>([]);
+  const [dataShadow, setDataShadow] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [ordemProdutos, setOrdemProdutos] = useState<OrdemType>("padrao");
 
@@ -14,6 +15,7 @@ const FiltroProdutos = () => {
     const fetchData = async () => {
       const dataApi = await fetchProducts();
       setData(dataApi.products);
+      setDataShadow(dataApi.products);
       setIsLoading(false);
     };
 
@@ -23,13 +25,16 @@ const FiltroProdutos = () => {
   if (isLoading) {
     return <div>CARREGANDO...</div>;
   }
-
+  
   const onChangeOrder = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setDataShadow(data);
     setOrdemProdutos(e.target.value as OrdemType);
 
-    if (!data) return [];
+    if (!dataShadow) return [];
 
-    const filteredData = data.sort((a, b) => {
+    const validatedData = dataShadow.filter(item => item !== undefined);
+
+    const filteredData = validatedData.sort((a, b) => {
       switch (ordemProdutos) {
         case "padrao":
           return (a.price - b.price);
@@ -38,15 +43,16 @@ const FiltroProdutos = () => {
         case "prc-desc":
           return (a.price - b.price);
         case "qtd-asc":
-          return (a.stock - b.stock);
-        case "qtd-desc":
           return (b.stock - a.stock);
+        case "qtd-desc":
+          return (a.stock - b.stock);
         default:
+          []
           break;
       }
     })
 
-    setData(filteredData)
+    setDataShadow(filteredData)
   };
   
 
@@ -60,8 +66,8 @@ const FiltroProdutos = () => {
         <option value="qtd-desc">Quantidade - Ordem decrescente</option>
       </select>
       <div className="flex flex-wrap items-center justify-center gap-8">
-        {data &&
-          data?.map((item, i) => (
+        {dataShadow &&
+          dataShadow?.map((item, i) => (
             <Produto produto={item} key={item.id} num={i}/>
         ))}
       </div>
