@@ -15,10 +15,10 @@ export const CalculoTriangulo = () => {
 
   const calcularArea = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // if (valoresArea.altura & valoresArea.base !== null)  {
-    //   console.log("n é null")
-    // }
-    const area = (valoresArea.base! * valoresArea.altura!) / 2;
+
+    if (!valoresArea.base || !valoresArea.altura) return;
+
+    const area = (valoresArea.base * valoresArea.altura) / 2;
 
     setResultados({
       ...resultados,
@@ -28,8 +28,9 @@ export const CalculoTriangulo = () => {
 
   const calcularPerimetro = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const perimetro = (valoresArea.altura! + valoresArea.base! + valoresArea.hipo!);
+    if (!valoresArea.altura || !valoresArea.base || !valoresArea.hipo) return;
+    
+    const perimetro = (valoresArea.altura + valoresArea.base + valoresArea.hipo);
 
     setResultados({
       ...resultados,
