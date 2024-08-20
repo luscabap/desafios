@@ -34,5 +34,15 @@ export const desafios: TDesafio[] = [
     dicas: [
       "Salve os valores digitados pelo usuário em um state."
     ]
+  },
+  {
+    id: uuidv4(),
+    nome: "Filtrar produtos de uma loja",
+    slug: "filtro-produtos",
+    enunciado: "Crie opções de filtrar produtos por preço, quantidade, desconto, categoria crescente e decrescente.",
+    resolucao: "FiltroProdutos",
+    dicas: [
+      "Faça a requisição dos produtos no endpoint: https://dummyjson.com/products"
+    ]
   }
 ]
