@@ -47,7 +47,7 @@ const FiltroProdutos = () => {
         case "qtd-desc":
           return (a.stock - b.stock);
         default:
-          []
+          return (a.price - b.price);
           break;
       }
     })
