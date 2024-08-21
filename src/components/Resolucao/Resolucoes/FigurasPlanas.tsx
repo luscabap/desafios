@@ -71,7 +71,7 @@ const FigurasPlanas = () => {
     <div>
       <div className="flex flex-col items-start justify-start">
         <select required 
-          className="text-black bg-slate-600 p-1 rounded-lg"
+          className="text-white bg-slate-600 p-1 rounded-lg"
           onChange={e => setFigura(e.target.value)}
         >
           <option value="">Selecione uma opção</option>
