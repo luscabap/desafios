@@ -38,6 +38,15 @@ export const CalculoTriangulo = () => {
     })
   }
 
+  const changedValue = (field: "base" | "altura" | "hipo") => {
+    return (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValoresArea({
+        ...valoresArea,
+        [field]: Number(event.target.value)
+      })
+    }
+  }
+
   return (
     <div className="flex flex-col items-center justify-center gap-12">
       <form onSubmit={calcularArea} className="text-white flex flex-col items-center justify-center gap-4">
@@ -49,10 +58,7 @@ export const CalculoTriangulo = () => {
             placeholder="Base"
             id="baseAltura"
             required
-            onChange={e => setValoresArea({
-            ...valoresArea,
-            base: Number(e.target.value)
-            })}
+            onChange={changedValue("base")}
             className="bg-slate-600 rounded-lg p-1"
           />
         </div>
@@ -63,10 +69,7 @@ export const CalculoTriangulo = () => {
             required
             id="alturaArea"
             placeholder="Altura"
-            onChange={e => setValoresArea({
-              ...valoresArea,
-              altura: Number(e.target.value)
-            })}
+            onChange={changedValue("altura")}
             className="bg-slate-600 rounded-lg p-1"
           />
         </div>
@@ -86,10 +89,7 @@ export const CalculoTriangulo = () => {
             type="number" 
             placeholder="Cateto Adjacente" 
             required
-            onChange={e => setValoresArea({
-              ...valoresArea,
-              base: Number(e.target.value)
-            })}
+            onChange={changedValue("base")}
           />
         </div>
         <div className="flex flex-col items-start justify-center gap-2">
@@ -100,10 +100,7 @@ export const CalculoTriangulo = () => {
             type="number" 
             placeholder="Cateto Oposto" 
             required
-            onChange={e => setValoresArea({
-              ...valoresArea,
-              altura: Number(e.target.value)
-            })}
+            onChange={changedValue("altura")}
           />
         </div>
         <div className="flex flex-col items-start justify-center gap-2">
@@ -114,10 +111,7 @@ export const CalculoTriangulo = () => {
             type="number" 
             placeholder="Hipotenusa" 
             required
-            onChange={e => setValoresArea({
-              ...valoresArea,
-              hipo: Number(e.target.value)
-            })}
+            onChange={changedValue("hipo")}
           />
         </div>
         <button type="submit" className="bg-slate-500 hover:bg-slate-400 p-1 rounded-lg">Calcular perímetro</button>
