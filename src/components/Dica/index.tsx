@@ -12,7 +12,7 @@ export const Dica = ({ text }: {text: string}) => {
         <AnimatePresence>
           { tipIsHiden && (
             <motion.p 
-              className="absolute bg-slate-700 w-full origin-right p-1 rounded-lg"
+              className="absolute bg-slate-700 w-full origin-right pl-2 rounded-lg h-full"
               initial={{ scaleX: 1 }}
               animate={{ scaleX: 1 }}
               exit={{ scaleX: 0 }}
@@ -20,7 +20,7 @@ export const Dica = ({ text }: {text: string}) => {
             >Clique na lâmpada para revelar a dica.</motion.p>
           )}
         </AnimatePresence>
-        <p className="w-full">{text}</p>
+        <p className="w-full h-full">{text}</p>
       </div>
     </div>
   )
