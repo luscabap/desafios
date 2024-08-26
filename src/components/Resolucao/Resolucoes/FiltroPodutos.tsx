@@ -22,43 +22,37 @@ const FiltroProdutos = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+      const validatedData = data.filter(item => item !== undefined);
+
+      const filteredData = [...validatedData].sort((a, b) => {
+        switch (ordemProdutos) {
+          case "padrao":
+            return a.price - b.price;
+          case "prc-asc":
+            return a.price - b.price;
+          case "prc-desc":
+            return b.price - a.price;
+          case "qtd-asc":
+            return a.stock - b.stock;
+          case "qtd-desc":
+            return b.stock - a.stock;
+          default:
+            return a.price - b.price;
+        }
+      })
+  
+      setDataShadow(filteredData);
+      
+  }, [ordemProdutos, data])
+
   if (isLoading) {
     return <div>CARREGANDO...</div>;
   }
-  
-  const onChangeOrder = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setDataShadow(data);
-    setOrdemProdutos(e.target.value as OrdemType);
-
-    if (!dataShadow) return [];
-
-    const validatedData = dataShadow.filter(item => item !== undefined);
-
-    const filteredData = validatedData.sort((a, b) => {
-      switch (ordemProdutos) {
-        case "padrao":
-          return (a.price - b.price);
-        case "prc-asc":
-          return (b.price - a.price);
-        case "prc-desc":
-          return (a.price - b.price);
-        case "qtd-asc":
-          return (b.stock - a.stock);
-        case "qtd-desc":
-          return (a.stock - b.stock);
-        default:
-          return (a.price - b.price);
-          break;
-      }
-    })
-
-    setDataShadow(filteredData)
-  };
-  
 
   return (
     <div className="flex flex-col items-center justify-center gap-8">
-      <select onChange={onChangeOrder} className="bg-slate-400 self-start p-2 rounded-lg">
+      <select onChange={e => setOrdemProdutos(e.target.value as OrdemType)} className="bg-slate-400 self-start p-2 rounded-lg">
         <option value="padrao">Selecione uma opção</option>
         <option value="prc-asc">Preço - Ordem crescente</option>
         <option value="prc-desc">Preço - Ordem decrescente</option>
