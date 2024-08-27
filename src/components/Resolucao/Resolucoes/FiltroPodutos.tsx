@@ -9,7 +9,7 @@ type PesquisaProduto = string
 
 const FiltroProdutos = () => {
   const [data, setData] = useState<Product[]>([]);
-  const [dataShadow, setDataShadow] = useState<Product[]>([]);
+  const [dataShadow, setDataShadow] = useState<Product[] | null>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [ordemProdutos, setOrdemProdutos] = useState<OrdemType>("padrao");
   const [pesquisaProduto, setPesquisaProduto] = useState<PesquisaProduto>("");
@@ -58,16 +58,23 @@ const FiltroProdutos = () => {
       
       filteredData.length > 0
       ? setDataShadow(filteredData)
-      : setDataShadow([])
+      : setDataShadow(null)
     } else {
       setErroMsg(true)
     }
   }
 
+  useEffect(() => {
+    if (pesquisaProduto.length === 0){
+      setErroMsg(false);
+      setDataShadow(data);
+    }
+  }, [pesquisaProduto, data])
+
   if (isLoading) {
     return <div>CARREGANDO...</div>;
   }
-
+  
   return (
     <div className="flex flex-col items-center justify-center gap-8">
       <div className="w-full flex items-center justify-between gap-4">
@@ -96,7 +103,7 @@ const FiltroProdutos = () => {
         </form>
       </div>
       <div className="flex flex-wrap items-center justify-center gap-8">
-        { dataShadow.length === 0 ? <div>O PRODUTO "<span className="font-light">{pesquisaProduto}</span>" NÃO FOI ENCONTRADO!</div> : ""}
+        { dataShadow === null ? <div>O PRODUTO "<span className="font-light">{pesquisaProduto}</span>" NÃO FOI ENCONTRADO!</div> : ""}
         {dataShadow &&
           dataShadow?.map((item, i) => (
             <Produto produto={item} key={item.id} num={i}/>
