@@ -5,7 +5,7 @@ import { Produto } from "../../Produto";
 import { FaSearch } from "react-icons/fa";
 
 type OrdemType = "padrao" | "prc-asc" | "prc-desc" | "qtd-asc" | "qtd-desc";
-type PesquisaProduto = string
+type PesquisaProduto = string;
 
 const FiltroProdutos = () => {
   const [data, setData] = useState<Product[]>([]);
@@ -14,7 +14,7 @@ const FiltroProdutos = () => {
   const [ordemProdutos, setOrdemProdutos] = useState<OrdemType>("padrao");
   const [pesquisaProduto, setPesquisaProduto] = useState<PesquisaProduto>("");
   const [erroMsg, setErroMsg] = useState<boolean>(false);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       const dataApi = await fetchProducts();
@@ -27,87 +27,119 @@ const FiltroProdutos = () => {
   }, []);
 
   useEffect(() => {
-      const validatedData = data.filter(item => item !== undefined);
+    const validatedData = data.filter((item) => item !== undefined);
 
-      const filteredData = [...validatedData].sort((a, b) => {
-        switch (ordemProdutos) {
-          case "padrao":
-            return a.price - b.price;
-          case "prc-asc":
-            return a.price - b.price;
-          case "prc-desc":
-            return b.price - a.price;
-          case "qtd-asc":
-            return a.stock - b.stock;
-          case "qtd-desc":
-            return b.stock - a.stock;
-          default:
-            return a.price - b.price;
-        }
-      })
-  
-      setDataShadow(filteredData);
-      
-  }, [ordemProdutos, data])
+    const filteredData = [...validatedData].sort((a, b) => {
+      switch (ordemProdutos) {
+        case "padrao":
+          return a.price - b.price;
+        case "prc-asc":
+          return a.price - b.price;
+        case "prc-desc":
+          return b.price - a.price;
+        case "qtd-asc":
+          return a.stock - b.stock;
+        case "qtd-desc":
+          return b.stock - a.stock;
+        default:
+          return a.price - b.price;
+      }
+    });
+
+    setDataShadow(filteredData);
+  }, [ordemProdutos, data]);
 
   const searchItem = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (pesquisaProduto !== ""){
-      const filteredData = data.filter(item => item.title === pesquisaProduto)
-      setErroMsg(false)
-      
+    if (pesquisaProduto !== "") {
+      const splitedArray = pesquisaProduto.split(" ");
+
+      const newValue = splitedArray.map((item) => item.split(""));
+
+      const value = newValue.map((item) =>
+        item.map((i, ind) =>
+          ind === 0 ? i.toLocaleUpperCase() : i.toLocaleLowerCase()
+        )
+      );
+
+      const joinedValue = value.map((item) => item.join(""));
+
+      const valueCorrect = joinedValue.join(" ");
+
+      const filteredData = data.filter(
+        (item) => item.title === valueCorrect
+      );
+      setErroMsg(false);
+
       filteredData.length > 0
-      ? setDataShadow(filteredData)
-      : setDataShadow(null)
+        ? setDataShadow(filteredData)
+        : setDataShadow(null);
     } else {
-      setErroMsg(true)
+      setErroMsg(true);
     }
-  }
+  };
 
   useEffect(() => {
-    if (pesquisaProduto.length === 0){
+    if (pesquisaProduto.length === 0) {
       setErroMsg(false);
       setDataShadow(data);
     }
-  }, [pesquisaProduto, data])
+  }, [pesquisaProduto, data]);
 
   if (isLoading) {
     return <div>CARREGANDO...</div>;
   }
-  
+
   return (
     <div className="flex flex-col items-center justify-center gap-8">
       <div className="w-full flex items-center justify-between gap-4">
-        <select onChange={e => setOrdemProdutos(e.target.value as OrdemType)} className="bg-slate-700 self-start p-2 rounded-lg">
+        <select
+          onChange={(e) => setOrdemProdutos(e.target.value as OrdemType)}
+          className="bg-slate-700 self-start p-2 rounded-lg"
+        >
           <option value="padrao">Selecione uma opção</option>
           <option value="prc-asc">Preço - Ordem crescente</option>
           <option value="prc-desc">Preço - Ordem decrescente</option>
           <option value="qtd-asc">Quantidade - Ordem crescente</option>
           <option value="qtd-desc">Quantidade - Ordem decrescente</option>
         </select>
-        <form onSubmit={searchItem} className="flex flex-col items-center justify-center w-full gap-2">
+        <form
+          onSubmit={searchItem}
+          className="flex flex-col items-center justify-center w-full gap-2"
+        >
           <div className="flex w-full gap-2">
-            <input 
-              type="text" 
-              className="w-full bg-slate-700 self-start p-2 rounded-lg" 
-              placeholder="Pesquisar item" 
+            <input
+              type="text"
+              className="w-full bg-slate-700 self-start p-2 rounded-lg"
+              placeholder="Pesquisar item"
               value={pesquisaProduto}
-              onChange={e => setPesquisaProduto(e.target.value)}
+              onChange={(e) => setPesquisaProduto(e.target.value)}
             />
-            
+
             <button type="submit">
-              <FaSearch size={30}/>
+              <FaSearch size={30} />
             </button>
           </div>
-          {erroMsg && <h5 className="text-red-500 w-full">Por favor, digite algo para pesquisar.</h5>}
+          {erroMsg && (
+            <h5 className="text-red-500 w-full">
+              Por favor, digite algo para pesquisar.
+            </h5>
+          )}
         </form>
       </div>
       <div className="flex flex-wrap items-center justify-center gap-8">
-        { dataShadow === null ? <div>O PRODUTO "<span className="font-light">{pesquisaProduto}</span>" NÃO FOI ENCONTRADO!</div> : ""}
+        {dataShadow === null ? (
+          <div>
+            O PRODUTO "<span className="font-light">{pesquisaProduto}</span>"
+            NÃO FOI ENCONTRADO!
+          </div>
+        ) : (
+          ""
+        )}
         {dataShadow &&
           dataShadow?.map((item, i) => (
-            <Produto produto={item} key={item.id} num={i}/>
-        ))}
+            <Produto produto={item} key={item.id} num={i} />
+          ))}
       </div>
     </div>
   );
