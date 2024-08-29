@@ -1,20 +1,24 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { Logo } from "../Logo";
 import { desafios } from "../../data/desafios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion"
 
 export const Header = () => {
   const navigate = useNavigate();
+  const params = useParams()
   const [desafiosIsOpen, setDesafiosIsOpen] = useState(false);
 
   const toggleDesafioIsOpen = () => {
     setDesafiosIsOpen(pv => !pv)
   }
 
+  useEffect(() => {
+    setDesafiosIsOpen(false)
+  }, [params])
+
   const clickedDesafioItem = (slug: string) => {
     navigate(`/desafio/${slug}`)
-    setDesafiosIsOpen(false)
   }
 
   return (
