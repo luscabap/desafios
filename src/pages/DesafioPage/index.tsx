@@ -16,7 +16,7 @@ export const DesafioPage = () => {
     <AnimatePresence>
       <motion.div className="my-5 flex flex-col items-center justify-center gap-20 w-1/2">
           <TitleSection text={desafio.nome} contrast={true} size="large"/>
-          <h3 className="self-start">Funcionamento</h3>
+          <h3 className="self-start underline">Funcionamento</h3>
           <motion.div 
             className="w-full"
             initial={{ x: -150 }}
