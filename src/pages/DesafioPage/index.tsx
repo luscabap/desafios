@@ -33,7 +33,7 @@ export const DesafioPage = () => {
               )) }
           </div>
           <motion.button 
-            className="text-slate-500 items-center justify-center flex" onClick={() => navigate("/")}
+            className="text-slate-500 items-center justify-center flex hover:text-slate-300" onClick={() => navigate("/")}
             initial={{ x: 100 }}
             whileInView={{ x: 0 }}
           >

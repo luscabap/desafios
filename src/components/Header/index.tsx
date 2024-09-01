@@ -24,9 +24,9 @@ export const Header = () => {
   return (
     <header className="bg-slate-600 w-full flex items-center justify-between px-2 py-1">
       <Logo />
-      <button onClick={() => navigate("/")} className="cursor-pointer">Home</button>
-      <nav className="relative text-right w-1/6">
-        <h3 onClick={toggleDesafioIsOpen} className="cursor-pointer text-center">Desafios</h3>
+      <button onClick={() => navigate("/")} className="cursor-pointer flex-1 hover:text-slate-400">Home</button>
+      <nav className="relative text-right flex-1">
+        <h3 onClick={toggleDesafioIsOpen} className="cursor-pointer text-center hover:text-slate-400">Desafios</h3>
         <AnimatePresence>
           {desafiosIsOpen && (
             <motion.ul 

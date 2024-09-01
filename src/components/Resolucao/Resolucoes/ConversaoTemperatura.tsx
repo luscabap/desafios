@@ -29,11 +29,11 @@ const ConversaoTemperatura = () => {
       <form action="" onSubmit={(e) => handleSubmitTemperatura(num, opcao, e)} className='containerTemperatura flex flex-col gap-8'>
         <div className="flex flex-col items-start justify-start">
           <label htmlFor="">Digite o valor</label>
-          <input type="number" required onChange={e=> setNum(Number(e.target.value))} className="bg-zinc-700"/>
+          <input type="number" required onChange={e=> setNum(Number(e.target.value))} className="bg-zinc-700 p-1 rounded-lg"/>
         </div>
         <div className="flex flex-col items-start justify-start">
           <label htmlFor="">Selecione a unidade de medida</label>
-          <select required onChange={changedOpcaoMedida} className="bg-zinc-700">
+          <select required onChange={changedOpcaoMedida} className="bg-zinc-700 p-1 rounded-lg">
             <option content=''>
 
             </option>
