@@ -3,6 +3,7 @@ import { CalculoTriangulo } from "../../Calculos/FigurasPlanas/Triangulo";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { InfoWithIcon } from "../../InfoWithIcon";
 import { GrUserWorker } from "react-icons/gr";
+import { CalculoRetangulo } from "../../Calculos/FigurasPlanas/Retangulo";
 
 
 const FigurasPlanas = () => {
@@ -28,11 +29,7 @@ const FigurasPlanas = () => {
         setFigura(<CalculoTriangulo />)
         break;
       case "retangulo":
-        setFigura(<InfoWithIcon 
-          icon={<GrUserWorker />} 
-          text="EM CONSTRUÇÃO..."
-          directionPrimay={true}
-          />)
+        setFigura(<CalculoRetangulo />)
         break;
       case "quadrado":
         setFigura(<InfoWithIcon 
