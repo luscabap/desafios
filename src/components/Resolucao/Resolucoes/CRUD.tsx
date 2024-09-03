@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { CardMembro } from "../../CardMembro";
 
 type especialidades = "Desenvolvedor Front-End" | "Desenvolvedor Back-End" | "Administrador de Banco de Dados"
 
@@ -63,10 +64,10 @@ const Crud = () => {
     })
   }
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center gap-20">
       <h3 className="text-lg text-slate-600">Criar cadastro de TechPeople</h3>
       <form className="text-white flex flex-col items-start justify-start gap-8" onSubmit={createElement}>
-        <div>
+        <div className="flex items-center justify-center gap-4">
           <label>Digite o nome</label>
           <input
             type="text"
@@ -81,7 +82,7 @@ const Crud = () => {
             }
           />
         </div>
-        <div>
+        <div className="flex items-center justify-center gap-4">
           <label>Digite o e-mail</label>
           <input
             type="text"
@@ -96,22 +97,34 @@ const Crud = () => {
             }
           />
         </div>
-        <select 
-          className="p-1 rounded-lg bg-slate-700"
-          onChange={changeElement}
-        >
-          <option value="devfront">Desenvolvedor Front End</option>
-          <option value="devback">Desenvolvedor Back End</option>
-          <option value="dba">Administrador de Banco de Dados</option>
-        </select>
-        <button type="submit" className="self-center bg-slate-500 p-2 rounded-lg text-black">Criar</button>
-      </form>
-      {itens?.map(item => (
-        <div key={item.id}>
-          <h4>{item.name}</h4>
-          <h5 className="text-red-400">{item.especialidade}</h5>
+        <div className="flex flex-col items-start justify-start w-full">
+          <h4>Selecione o cargo</h4>
+          <select 
+            className="p-1 rounded-lg bg-slate-700 w-full"
+            onChange={changeElement}
+            required
+          >
+            <option value=""></option>
+            <option value="devfront">Desenvolvedor Front End</option>
+            <option value="devback">Desenvolvedor Back End</option>
+            <option value="dba">Administrador de Banco de Dados</option>
+          </select>
         </div>
-      ))}
+        <button type="submit" className="self-center bg-slate-500 p-2 rounded-lg text-black hover:bg-slate-300">Criar</button>
+      </form>
+      <div className="flex flex-col items-center justify-center gap-8">
+        <h4>Membros cadastrados</h4>
+        <div className="flex flex-wrap gap-8 max-w-96">
+          {itens?.map(item => (
+            <CardMembro 
+              email={item.email}
+              funcao={item.especialidade!}
+              nome={item.name}
+              key={item.id}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
