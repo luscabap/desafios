@@ -1,11 +1,11 @@
 import { FormEvent, useState } from "react";
 
-type especialidades = "dev-front" | "dev-backend" | "dba"
+type especialidades = "Desenvolvedor Front-End" | "Desenvolvedor Back-End" | "Administrador de Banco de Dados"
 
 enum EnumEspecialidades {
-  DesenvolvedorFrontEnd = "dev-front",
-  DesenvolvedorBackEnd = "dev-backend",
-  AdminBancoDados = "dba",
+  devfront = "Desenvolvedor Front-End",
+  devback = "Desenvolvedor Back-End",
+  dba = "Administrador de Banco de Dados",
 }
 
 type TItem = {
@@ -24,7 +24,7 @@ const Crud = () => {
     {
       name: "Lucas",
       email: "lucas@gmail.com",
-      especialidade: EnumEspecialidades.DesenvolvedorFrontEnd,
+      especialidade: EnumEspecialidades.devfront,
       id: gerarId(),
     },
   ]);
@@ -52,6 +52,16 @@ const Crud = () => {
       id: "",
     });
   };
+
+  const changeElement = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const valorEnum = e.target.value as keyof typeof EnumEspecialidades;
+    const especialidade = EnumEspecialidades[valorEnum]
+
+    setValores({
+      ...valores,
+      especialidade
+    })
+  }
   return (
     <div>
       <h3 className="text-lg text-slate-600">Criar cadastro de TechPeople</h3>
@@ -88,14 +98,11 @@ const Crud = () => {
         </div>
         <select 
           className="p-1 rounded-lg bg-slate-700"
-          onChange={e => setValores({
-            ...valores,
-            especialidade: EnumEspecialidades.AdminBancoDados
-          })}
+          onChange={changeElement}
         >
-          <option value="0">dev-front</option>
-          <option value="1">dev-backend</option>
-          <option value="2">dba</option>
+          <option value="devfront">Desenvolvedor Front End</option>
+          <option value="devback">Desenvolvedor Back End</option>
+          <option value="dba">Administrador de Banco de Dados</option>
         </select>
         <button type="submit" className="self-center bg-slate-500 p-2 rounded-lg text-black">Criar</button>
       </form>
