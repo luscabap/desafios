@@ -2,12 +2,14 @@ import {
   ConversaoTemperatura, 
   CalculoIMC,
   FigurasPlanas,
-  FiltroProdutos
+  FiltroProdutos,
+  Crud
 } from "./Resolucoes/index"
 
 export const RecordResolucoes: Record<string, React.ReactNode> = {
   ConversaoTemperatura: <ConversaoTemperatura />,
   CalculoIMC: <CalculoIMC />,
   FigurasPlanas: <FigurasPlanas />,
-  FiltroProdutos: <FiltroProdutos />
+  FiltroProdutos: <FiltroProdutos />,
+  CRUD: <Crud />
 }

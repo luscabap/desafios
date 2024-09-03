@@ -44,5 +44,16 @@ export const desafios: TDesafio[] = [
     dicas: [
       "Faça a requisição dos produtos no endpoint: https://dummyjson.com/products"
     ]
+  },
+  {
+    id: uuidv4(),
+    nome: "Create, Read, Update and Delete (CRUD)",
+    slug: "crud",
+    enunciado: "Crie um painel que somente um administrador consiga fazer as ações básicas das aplicações (CRUD).",
+    resolucao: "CRUD",
+    dicas: [
+      "Faça uma validação simples de email e senha.",
+      "Utilize estados para armazenar os valores."
+    ]
   }
 ]
