@@ -1,21 +1,34 @@
 import { useState } from "react";
 
+type TCalculos = {
+  area: number,
+  perimetro: number
+}
+
 export const CalculoRetangulo = () => {
   const [valores, setValores] = useState({
     altura: 0,
     largura: 0,
   });
 
-  const [res, setRes] = useState({
+  const [res, setRes] = useState<TCalculos>({
     area: 0,
     perimetro: 0,
   });
 
-  console.log(valores);
+  const [erro, setError] = useState(false);
 
-
+  const validaValores = () => {
+    if (valores.altura === 0 || valores.largura === 0) {
+      setError(true)
+    }
+    else{
+      setError(false);
+    }
+  }
 
   const calcArea = () => {
+    validaValores()
     const area = valores.altura * valores.largura;
 
     setRes({
@@ -25,6 +38,7 @@ export const CalculoRetangulo = () => {
   };
 
   const calcPerimetro = () => {
+    validaValores()
     const perimetro = valores.altura * 2 + valores.largura * 2;
 
     setRes({
@@ -41,7 +55,7 @@ export const CalculoRetangulo = () => {
         <input
           type="number"
           required
-          className="text-black p-1 rounded-lg bg-slate-600"
+          className="text-white p-1 rounded-lg bg-slate-600"
           onChange={(e) =>
             setValores({
               ...valores,
@@ -55,7 +69,7 @@ export const CalculoRetangulo = () => {
         <input
           required
           type="number"
-          className="text-black p-1 rounded-lg bg-slate-600"
+          className="text-white p-1 rounded-lg bg-slate-600"
           onChange={(e) =>
             setValores({
               ...valores,
@@ -69,6 +83,7 @@ export const CalculoRetangulo = () => {
         <button onClick={calcArea} className="hover:text-slate-400">Calcular Área</button>
         <button onClick={calcPerimetro} className="hover:text-slate-400">Calcular Perímetro</button>
       </div>
+      { erro && <h5 className="text-red-500">Verifique os campos digitados</h5> }
       <div className="flex gap-4 items-center justify-center">
         {res.area > 0 && <h4 className="">A área é: {res.area}</h4>}
         {res.perimetro > 0 && <h4 className="">O perímetro é: {res.perimetro}</h4>}
