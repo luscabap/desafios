@@ -16,6 +16,8 @@ Identificando essa necessidade em mim, percebi que outros desenvolvedores també
 
 O site tem como objetivo propor desafios para desenvolvedores resolverem, oferecendo uma oportunidade de revisar e reforçar conceitos cruciais de lógica. O propósito do DPD é incentivar a prática contínua de lógica e sempre AJUDAR outros desenvolvedores.
 
+Futuramente implementarei tarefas de Typescript, Algoritmos e questões mais complexas.
+
 🌎 Deploy do projeto: [https://desafios-dev.vercel.app/](https://desafios-dev.vercel.app/)
 
 ---
